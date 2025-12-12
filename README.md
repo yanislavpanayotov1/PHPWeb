@@ -1,59 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Проект: PHPWeb (Laravel + React)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Това е локална разработка с Laravel бекенд и React (Vite) фронтенд.
 
-## About Laravel
+**Какво включва**
+- Бекенд: Laravel (PHP) в корена на проекта.
+- Фронтенд: React приложение в папката `react/` (Vite).
+- Аутентикация: Laravel Sanctum (personal access tokens/SPA възможности).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Изисквания**
+- PHP (>= версия, посочена в `composer.json`)
+- Composer
+- Node.js и npm/yarn
+- База данни (SQLite)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Бърза инсталация (локално)**
+1. Клонирай репото и влез в проекта:
+   - `git clone <repo-url>`
+   - `cd PHPWeb`
+2. Инсталирай бекенд зависимостите:
+   - `composer install`
+3. Създай `.env` (копирай от `.env.example`) и настрой връзката с базата данни.
+   - `php artisan key:generate`
+4. Стартирай миграциите и евентуално seed-овете:
+   - `php artisan migrate`
+   - `php artisan db:seed`
+5. Инсталирай фронтенд зависимостите и стартирай Vite (в отделен терминал):
+   - `cd react`
+   - `npm install`
+   - `npm run dev`
+6. Стартирай Laravel сървъра локално (ако не използваш Valet/Docker):
+   - `php artisan serve`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Какво представлява проектът и каква е функционалността му
 
-## Laravel Sponsors
+Проектът е простo уеб приложение с отделен Laravel бекенд и React (Vite) фронтенд. Целта е да служи като стартова точка за SPA (single-page application) с API-базиран бекенд и основна потребителска система. Основните функционалности включват:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Потребителска регистрация и вход:** потребителите могат да се регистрират и да влизат чрез API (`/api/signup`, `/api/login`). Аутентикацията се реализира чрез Laravel Sanctum.
+- **Управление на потребители (Users):** има интерфейс и API за разглеждане, създаване и обновяване на потребители (CRUD операции). След логин/регистрация потребителят се пренасочва към страницата `/users`.
+- **REST API:** бекендът предоставя API маршрути под `routes/api.php` за използване от фронтенда. API маршрутите обслужват JSON и връщат токени/данни на потребители при успешна аутентикация.
+- **React SPA:** фронтендът е изграден с React и React Router; компонентите използват централен контекст (`ContextProvider`) за съхранение на потребителя и токена и axios клиент за извиквания към API.
+- **Разделяне на отговорностите:** бекендът отговаря за бизнес логика, валидация и база данни; фронтендът отговаря за UI/UX и SPA навигация.
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
